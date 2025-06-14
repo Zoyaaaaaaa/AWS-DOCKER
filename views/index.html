@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Assignment App</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="container">
+        <h1>DevOps Assignment Portal</h1>
+        <p class="subtitle">Containerized Node.js application deployed on AWS EC2 with modern DevOps practices</p>
+        
+        <div class="status-badge">🚀 Live & Running</div>
+        
+        <div class="features">
+            <div class="feature-box">
+                <div class="feature-icon">🐳</div>
+                <h2>Dockerized</h2>
+                <p>Fully containerized application ensuring consistent deployment across all environments with optimized Docker images and multi-stage builds.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">☁️</div>
+                <h2>AWS EC2 Deployed</h2>
+                <p>Scalable cloud deployment on Amazon EC2 with auto-scaling groups, load balancing, and high availability configuration.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">⚡</div>
+                <h2>CI/CD Pipeline</h2>
+                <p>Automated deployment pipeline with GitHub Actions, automated testing, code quality checks, and zero-downtime deployments.</p>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">📊</div>
+                <h2>Monitoring & Logs</h2>
+                <p>Comprehensive monitoring with CloudWatch, application logs, performance metrics, and alerting for proactive issue resolution.</p>
+            </div>
+        </div>
+
+        <div class="tech-stack">
+            <h2 style="color: #2c3e50; margin-bottom: 20px;">Technology Stack</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">AWS EC2</span>
+                <span class="tech-tag">GitHub Actions</span>
+                <span class="tech-tag">CloudWatch</span>
+                <span class="tech-tag">Nginx</span>
+                <span class="tech-tag">PM2</span>
+            </div>
+        </div>
+
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate feature boxes on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all feature boxes
+            document.querySelectorAll('.feature-box').forEach(box => {
+                box.style.opacity = '0';
+                box.style.transform = 'translateY(20px)';
+                box.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(box);
+            });
+
+            // Add click effects to tech tags
+            document.querySelectorAll('.tech-tag').forEach(tag => {
+                tag.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-2px)';
+                    }, 150);
+                });
+            });
+
+            // Update status badge periodically
+            const statusBadge = document.querySelector('.status-badge');
+            const statuses = ['🚀 Live & Running', '✅ All Systems Go', '🔥 Performance Optimal', '⚡ Fast Response Time'];
+            let statusIndex = 0;
+
+            setInterval(() => {
+                statusIndex = (statusIndex + 1) % statuses.length;
+                statusBadge.textContent = statuses[statusIndex];
+            }, 4000);
+        });
+    </script>
+</body>
+</html>
